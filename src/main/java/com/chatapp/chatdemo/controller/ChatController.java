@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-//@CrossOrigin("https://saurabhkumarniit.github.io")
-@CrossOrigin("http://localhost:4200/")
+@CrossOrigin("https://saurabhkumarniit.github.io")
+//@CrossOrigin("http://localhost:4200/")
 
 public class ChatController {
 
