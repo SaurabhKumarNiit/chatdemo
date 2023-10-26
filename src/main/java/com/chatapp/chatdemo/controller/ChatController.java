@@ -13,7 +13,8 @@ import java.util.List;
 
 @RestController
 //@CrossOrigin("https://saurabhkumarniit.github.io")
-@CrossOrigin("https://localhost:4200")
+@CrossOrigin("http://localhost:4200/")
+
 public class ChatController {
 
     @Autowired
