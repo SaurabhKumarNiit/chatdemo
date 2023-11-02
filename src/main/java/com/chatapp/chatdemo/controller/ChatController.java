@@ -2,8 +2,10 @@ package com.chatapp.chatdemo.controller;
 
 import com.chatapp.chatdemo.domain.Chat1;
 import com.chatapp.chatdemo.domain.Chat2;
+import com.chatapp.chatdemo.domain.Items;
 import com.chatapp.chatdemo.services.Chat1Service;
 import com.chatapp.chatdemo.services.Chat2Service;
+import com.chatapp.chatdemo.services.ItemsServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("https://saurabhkumarniit.github.io")
-//@CrossOrigin("http://localhost:4200/")
+//@CrossOrigin("https://saurabhkumarniit.github.io")
+@CrossOrigin("http://localhost:3000/")
 
 public class ChatController {
 
@@ -22,6 +24,9 @@ public class ChatController {
 
     @Autowired
     Chat2Service chat2Service;
+
+    @Autowired
+    ItemsServices itemsServices;
 
     @PostMapping("/sendMessage1")
     public ResponseEntity<?> sendMessage1(@RequestBody Chat1 chat1){
@@ -44,6 +49,18 @@ public class ChatController {
     @GetMapping("/readMessage2")
     public List<Chat2> readAllMessage2() {
         return chat2Service.readMessage2();
+    }
+
+
+    @PostMapping("/saveItems")
+    public ResponseEntity<?> SaveItems(@RequestBody Items items){
+        Items items1 = itemsServices.saveItems(items);
+        return new ResponseEntity<>(items1, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/getItems")
+    public List<Items> getItems() {
+        return itemsServices.getItems();
     }
 
 }
