@@ -73,4 +73,9 @@ public class ChatController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PutMapping("/updateItem/{id}")
+    public ResponseEntity<?> updateItem(@RequestBody Items item,@PathVariable int id) {
+        return new ResponseEntity<>(itemsServices.updateItem(item,id),HttpStatus.CREATED);
+    }
 }
