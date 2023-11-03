@@ -21,4 +21,9 @@ public class ItemsServices {
 
         return itemsRepository.findAll();
     }
+
+    public Items getItemsByCategory(String category){
+
+        return itemsRepository.findByCategory(category);
+    }
 }

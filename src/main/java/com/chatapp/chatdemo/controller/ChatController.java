@@ -29,7 +29,7 @@ public class ChatController {
     ItemsServices itemsServices;
 
     @PostMapping("/sendMessage1")
-    public ResponseEntity<?> sendMessage1(@RequestBody Chat1 chat1){
+    public ResponseEntity<?> sendMessage1(@RequestBody Chat1 chat1) {
         Chat1 sendMessage1 = chat1Service.sendMessage1(chat1);
         return new ResponseEntity<>(sendMessage1, HttpStatus.CREATED);
     }
@@ -41,7 +41,7 @@ public class ChatController {
 
 
     @PostMapping("/sendMessage2")
-    public ResponseEntity<?> sendMessage2(@RequestBody Chat2 chat2){
+    public ResponseEntity<?> sendMessage2(@RequestBody Chat2 chat2) {
         Chat2 sendMessage2 = chat2Service.sendMessage2(chat2);
         return new ResponseEntity<>(sendMessage2, HttpStatus.CREATED);
     }
@@ -53,7 +53,7 @@ public class ChatController {
 
 
     @PostMapping("/saveItems")
-    public ResponseEntity<?> SaveItems(@RequestBody Items items){
+    public ResponseEntity<?> SaveItems(@RequestBody Items items) {
         Items items1 = itemsServices.saveItems(items);
         return new ResponseEntity<>(items1, HttpStatus.CREATED);
     }
@@ -63,4 +63,14 @@ public class ChatController {
         return itemsServices.getItems();
     }
 
+
+    @GetMapping("/items/{category}")
+    public ResponseEntity<?> getItemsByCategory(@PathVariable String category) {
+        try {
+            return new ResponseEntity<>(itemsServices.getItemsByCategory(category), HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

@@ -7,7 +7,6 @@ import javax.persistence.Id;
 
 @Entity
 public class Items {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -15,16 +14,18 @@ public class Items {
     private String title;
     private String description;
     private String price;
+    private String category;
 
     public Items() {
     }
 
-    public Items(long id, String image, String title, String description, String price) {
+    public Items(long id, String image, String title, String description, String price ,String category) {
         this.id = id;
         this.image = image;
         this.title = title;
         this.description = description;
         this.price = price;
+        this.category=category;
     }
 
     public long getId() {
@@ -67,6 +68,14 @@ public class Items {
         this.price = price;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "Items{" +
@@ -75,6 +84,7 @@ public class Items {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price='" + price + '\'' +
+                ", category='" + category + '\'' +
                 '}';
     }
 }
